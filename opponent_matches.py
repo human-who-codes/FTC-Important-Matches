@@ -39,7 +39,9 @@ def get_opponent_matches(matches, opponents):
     for match in matches:
         for opponent in opponents:
             if opponent in match:
-                target_matches.append(match[0])
+                target_matches.append(match)
+                # continue so that we don't add the same match twice
+                break
     return target_matches
 
 # return match numbers of a set of matches

@@ -24,8 +24,7 @@ def get_matches(url):
         nums = nums[4:]
         nums = nums.split("_")
         last_index = int(nums[1]) - 1
-        matches[int(nums[1])-1][int(nums[0])] = ids.text.strip("\n")
+        matches[int(nums[1])-1][int(nums[0])] = ids.text.strip("\n").strip()
         matches[int(nums[1])-1][0] = int(nums[1])
     matches = matches[:last_index+1]
-    print(matches)
     return matches

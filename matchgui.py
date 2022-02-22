@@ -58,7 +58,7 @@ def add_get_matches_button(root, url_input):
 def get_matches(url_input):
     all_matches = getmatches.get_matches(url_input)
     matches = opponent_matches.get_important_matches(all_matches, team='8672')
-
+    print(matches)
     
 main()
 
