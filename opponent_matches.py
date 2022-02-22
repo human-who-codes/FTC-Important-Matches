@@ -1,13 +1,13 @@
 # Receive a list of ftc matches that should be returned with some of the matches highlighted
 # Matches are inputed as a list of tuples of the form:
-#  (match_num, blue1, blue2, red1, red2)
+#  [match_num, blue1, blue2, red1, red2]
 #Return a list of numbers that are the matches that should be returned
 
 def get_important_matches(matches, team):
-  # matches = [(1, 'a', 'b', 'c', 'd'), 
-  # (2, 'e', 'f', 'g', 'h'), 
-  # (3, 'i', 'j', 'k', 'l'), 
-  # (4, 'm', 'n', 'o', 'p')]
+  # matches = [[1, 'a', 'b', 'c', 'd'], 
+  #[2, 'e', 'f', 'g', 'h'], 
+  # [3, 'i', 'j', 'k', 'l'], 
+  # [4, 'm', 'n', 'o', 'p']]
   # team = 'a'
   opponents = get_opponents(matches, team)
   opponent_matches = get_opponent_matches(matches, opponents)
