@@ -18,6 +18,8 @@ import getmatches
 
 URL = "http://ftc-events.firstinspires.org/2021/USIACMPBLA/qualifications"
 TEAM = "8672"
+Green_Teams = []
+Yellow_Teams = []
 
 def main():
 
@@ -69,7 +71,7 @@ def add_components(root):
 
     table = show_matches(root, url_input.get(), team_input.get())
 
-    table.grid(column=0, columnspan=5, row=2, pady=5)
+    table.grid(column=0, columnspan=5, row=3, pady=5)
 
 
 # add a input for a url in the center top of the window
@@ -83,7 +85,6 @@ def add_url_input(root):
     url_input.insert(0,
 
                      URL)
-    print(URL)
 
     return url_input
 
@@ -122,7 +123,7 @@ def refresh(root, url_input_box, team_input):
 def get_important_matches(root, url_input, team_input):
     all_matches = get_all_matches(url_input)
 
-    matches = opponent_matches.get_important_matches(all_matches, team_input)
+    matches = opponent_matches.get_important_matches(all_matches, team_input, bool(ALLIANCEOROPPONENT))
     return matches
 
 
@@ -135,9 +136,11 @@ def get_all_matches(url_input):
 
 def show_matches(root, url_input, team_input):
     all_matches = get_all_matches(url_input)
-    important_matches = get_important_matches(root, url_input, team_input)
+    green_teams = [TEAM]
+    yellow_teams = get_yellow_teams(all_matches, team_input)
+
     textbox = tk.Text(root, width=70, height=20, font=("Robot", 14))
-    add_text_to_table(textbox, all_matches, important_matches)
+    add_text_to_table(textbox, all_matches, green_teams, yellow_teams)
     # add a scrollbar
     scrollbar = tk.Scrollbar(root, command=textbox.yview)
     scrollbar.grid(row=2, column=5, sticky='nsew')
@@ -145,22 +148,26 @@ def show_matches(root, url_input, team_input):
     return textbox
 
 
-def add_text_to_table(textbox, all_matches, important_matches):
-    textbox.tag_configure('highlight', background='yellow')
+def add_text_to_table(textbox, all_matches, green_teams, yellow_teams, blue_teams):
+    textbox.tag_configure('green', background='lime green')
+    textbox.tag_configure('yellow', background='yellow')
+
     for i in range(len(all_matches)):
         for j in [0, 1, 2, 3, 4]:
-            string = str(all_matches[i][j]) + '\t'
-            if j == 4:
-                string += "\n"
-            if i + 1 in important_matches:
-                # add tag to this line
-                textbox.insert(tk.END, string, 'highlight')
+            string = str(all_matches[i][j])
+            # don't include the '\t' in the conditions
+            if string in green_teams:
+                textbox.insert(tk.END, string, 'green')
+            elif string in yellow_teams:
+                textbox.insert(tk.END, string, 'yellow')
             else:
                 textbox.insert(tk.END, string)
+            textbox.insert(tk.END, '\t')
             # check to see if row number is in important matches
-
+        textbox.insert(tk.END, '\n')
 # actually begin the window
-
+def get_yellow_teams(all_matches, team_input):
+    return opponent_matches.get_yellow_teams(all_matches, team_input)
 
 if __name__ == '__main__':
     main()
