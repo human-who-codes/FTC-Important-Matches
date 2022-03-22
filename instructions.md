@@ -1,4 +1,4 @@
-#How to Use
+# How to Use
 
 1. Enter the official link of the tournament/competition that you need to see from http://ftc-events.firstinspires.org/
 2. Enter your team's number
