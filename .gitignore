@@ -1,5 +1,15 @@
 __pycache__/
-
+./__pycache__/
+/__pycache__
+/__pycache__/
 build/
+./build/
+/build
 
 dist/
+/dist
+matchgui.spec
+__pycache__/getmatches.cpython-310.pyc
+__pycache__/getmatches.cpython-310.pyc
+__pycache__/utilfuncs.cpython-310.pyc
+__pycache__/opponent_matches.cpython-310.pyc

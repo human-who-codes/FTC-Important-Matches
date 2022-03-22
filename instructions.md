@@ -1,5 +1,6 @@
 # How to Use
 
+0. Open matchgui.exe
 1. Enter the official link of the tournament/competition that you need to see from http://ftc-events.firstinspires.org/
 2. Enter your team's number
 3. Look at all the matches involving your future allies and opponents
