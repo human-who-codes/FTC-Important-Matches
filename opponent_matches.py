@@ -10,9 +10,9 @@ def get_yellow_teams(matches, team):
   # [4, 'm', 'n', 'o', 'p']]
   # team = 'a'
 
-  print(get_opponents(matches, team))
   return get_opponents(matches, team)
-
+def get_blue_teams(matches, team):
+    return get_allies(matches, team)
 # return all opponents that team will face
 def get_opponents(matches, team):
     opponents = []
